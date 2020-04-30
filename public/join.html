@@ -35,6 +35,12 @@
       <div class="chat-container">
         <header class="chat-header">
           <h1><i class="fas fa-random"></i> RiNGo</h1>
+          <div id="share">
+            <a class="btn" onclick="copy()">
+              <div id="link">url</div>
+              <i id="copy" class="fas fa-copy"></i> </a
+            >Share link to invite
+          </div>
           <a href="./" class="btn">Leave Room</a>
         </header>
         <main class="chat-main">
@@ -77,6 +83,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/test.js"></script>
+    <script src="/js/join.js"></script>
   </body>
 </html>

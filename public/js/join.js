@@ -19,6 +19,7 @@ usernameForm.addEventListener('submit', (e) => {
     location.pathname = '/';
   });
 
+  document.getElementById('link').innerHTML = location.href;
   //#region hide elements after succesfull submit
   for (var i = 0, len = elements.length; i < len; ++i) {
     elements[i].disabled = true;
@@ -147,3 +148,27 @@ const outputDice = (message) => {
   <div class="dice">Dice rolled with ${message.text}</div>`;
   document.querySelector('.chat-messages').appendChild(div);
 };
+
+function copy() {
+  element = document.getElementById('link');
+  var range, selection, worked;
+
+  if (document.body.createTextRange) {
+    range = document.body.createTextRange();
+    range.moveToElementText(element);
+    range.select();
+  } else if (window.getSelection) {
+    selection = window.getSelection();
+    range = document.createRange();
+    range.selectNodeContents(element);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+
+  try {
+    document.execCommand('copy');
+    alert('text copied');
+  } catch (err) {
+    alert('unable to copy text');
+  }
+}

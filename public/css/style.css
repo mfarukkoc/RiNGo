@@ -197,6 +197,18 @@ a {
 }
 
 /* Join Page */
+
+#share {
+  display: grid;
+  text-align: center;
+}
+
+#share a {
+  border-radius: 20px;
+  margin-bottom: 5px;
+  display: flex;
+}
+
 .join-container {
   max-width: 500px;
   margin: 80px auto;
