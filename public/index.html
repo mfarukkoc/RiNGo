@@ -1,48 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
       integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="css/tailwind-output.css" />
+    <link rel="stylesheet" href="css/animation.css" />
     <title>RiNGo</title>
   </head>
-  <body>
-    <div class="join-container">
-      <header class="join-header">
-        <h1><i class="fas fa-random"></i> RiNGo</h1>
-      </header>
-      <main class="join-main">
-        <form id="create-room-form">
-          <div class="form-control">
-            <label for="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              placeholder="Enter username..."
-              required
-            />
-          </div>
-          <div class="form-control">
-            <label for="room">Room Name</label>
-            <input
-              type="text"
-              id="room"
-              placeholder="Enter roomname..."
-              required
-            />
-          </div>
-          <button type="submit" class="btn">Create Room</button>
-        </form>
-      </main>
+  <body class="bg-indigo-200 min-h-full flex flex-col justify-center">
+    <div
+      class="xl:w-4/12 lg:w-6/12 md:w-8/12 w-10/12 mx-auto bg-indigo-500 rounded-md shadow-lg"
+    >
+      <div
+        class="bg-indigo-600 p-4 text-4xl text-indigo-100 font-bold rounded-t-md text-center select-none"
+      >
+        <i class="fas fa-random"></i> <span class="r-animation">R</span>i<span
+          class="n-animation"
+          >N</span
+        ><span class="g-animation">G</span>o
+      </div>
+      <form class="p-4 flex flex-col items-center" id="create-room-form">
+        <div class="md:w-4/6 w-5/6 mt-2">
+          <span class="text-indigo-100 text-lg block mb-1 w-full font-semibold"
+            >Name</span
+          >
+          <input
+            type="text"
+            placeholder="Enter user name..."
+            name="username"
+            class="form-input bg-indigo-200 text-indigo-800 placeholder-indigo-600 rounded-md block w-full font-medium"
+          />
+        </div>
+        <div class="md:w-4/6 w-5/6 mt-2">
+          <span class="text-indigo-100 text-lg block mb-1 w-full font-semibold"
+            >Room Name</span
+          >
+          <input
+            type="text"
+            placeholder="Enter room name..."
+            name="room"
+            class="form-input bg-indigo-200 text-indigo-800 placeholder-indigo-600 rounded-md block w-full font-medium"
+          />
+        </div>
+        <div class="md:w-4/6 w-5/6 my-4">
+          <button
+            type="submit"
+            class="rounded-md bg-indigo-200 text-indigo-600 font-bold text-lg w-full py-2 hover:bg-indigo-300 transition-colors duration-300 shadow"
+          >
+            Create Room
+          </button>
+        </div>
+      </form>
     </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="./js/indexPage.js"></script>
   </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="./js/indexPage.js"></script>
 </html>

@@ -36,6 +36,8 @@ io.sockets.on('connection', (socket) => {
     const user = userJoin(socket.id, username, roomId, 'Unknown');
     if (user == -1) {
       socket.emit('noRoom');
+    } else {
+      socket.emit('joinSuccess');
     }
     socket.join(user.roomId);
 
@@ -65,8 +67,6 @@ io.sockets.on('connection', (socket) => {
       const user = getCurrentUser(socket.id);
       let result = getRandom(socket.id);
       let name = '';
-      console.log('random emitted');
-      console.log(result);
       if (result['succes'] == true) {
         name = result.lucky.username;
         io.to(result.lucky.roomId).emit(
@@ -76,8 +76,6 @@ io.sockets.on('connection', (socket) => {
             `${name} is the lucky one!`
           )
         );
-
-        console.log('aa');
       }
       io.emit('randomUser', { result, name });
     });
@@ -121,7 +119,12 @@ io.sockets.on('connection', (socket) => {
 
     socket.on('chatMessage', (msg) => {
       const user = getCurrentUser(socket.id);
-      io.to(user.roomId).emit('message', formatMessage(user.username, msg));
+      // seperate self-message, broadcast-message
+      socket.broadcast
+        .to(user.roomId)
+        .emit('message', formatMessage(user.username, msg));
+      // everyone except itself
+      socket.emit('message', formatMessage('You', msg));
     });
   });
 });
