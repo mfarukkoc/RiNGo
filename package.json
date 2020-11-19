@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "build:css": "tailwind build src/tailwind.css -o public/css/tailwind-output.css"
   },
   "author": "MFKoc",
   "license": "ISC",
@@ -13,9 +14,11 @@
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "shortid": "^2.2.15",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "tailwindcss": "^1.9.6"
   },
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "nodemon": "^2.0.3"
   }
 }

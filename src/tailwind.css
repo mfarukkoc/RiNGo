@@ -1,0 +1,22 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components {
+  .message {
+    @apply bg-indigo-500 text-base font-normal rounded-md self-start my-1 break-words;
+    min-width: 35%;
+    max-width: 90%;
+  }
+  .msg-meta {
+    @apply text-base font-semibold text-indigo-800 bg-indigo-400 rounded-t-md p-2;
+  }
+  .msg-text {
+    @apply p-2 text-indigo-100 font-semibold;
+  }
+  .msg-time {
+    @apply text-indigo-700 text-sm;
+  }
+}

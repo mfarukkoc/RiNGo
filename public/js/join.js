@@ -16,7 +16,9 @@ usernameForm.addEventListener('submit', (e) => {
   socket.emit('joinRoom', { username, roomId });
   var elements = usernameForm.elements;
   socket.on('noRoom', () => {
-    location.pathname = '/';
+    usernameForm.innerHTML =
+      '<div class="text-center">Room Not Found <br /> Returning to Home Page</div>';
+    setTimeout(() => (location.pathname = '/'), 2000);
   });
 
   document.getElementById('link').innerHTML = location.href;
@@ -24,8 +26,9 @@ usernameForm.addEventListener('submit', (e) => {
   for (var i = 0, len = elements.length; i < len; ++i) {
     elements[i].disabled = true;
   }
-  document.getElementById('login-container').style.height = 0;
-  usernameForm.style.display = 'none';
+  socket.on('joinSuccess', () =>
+    document.getElementById('login-container').classList.add('join-animation')
+  );
 
   //#endregion
 });
@@ -85,8 +88,11 @@ chatform.addEventListener('submit', (e) => {
 const outputMessage = (message) => {
   const div = document.createElement('div');
   div.classList.add('message');
-  div.innerHTML = `<p class="meta"> ${message.username}<span> ${message.time}</span></p>
-  <p class="text">
+  if (message.username === 'You') {
+    div.classList.add('self-end');
+  }
+  div.innerHTML = `<p class="msg-meta">${message.username}<span class="msg-time"> ${message.time}</span></p>
+  <p class="msg-text">
     ${message.text}
   </p>`;
   document.querySelector('.chat-messages').appendChild(div);
@@ -110,10 +116,12 @@ drawRandom.addEventListener('click', () => {
 const outputCoinFlip = (message) => {
   const div = document.createElement('div');
   div.classList.add('message');
-  div.innerHTML = `<p class="meta"> ${message.username}<span> ${message.time}</span></p>
+  div.innerHTML = `<p class="msg-meta"> ${message.username}<span class="msg-time"> ${message.time}</span></p>
+  <div class="p-2">
   <div class="coin">
   <div class="side-a"></div>
   <div class="side-b"></div>
+</div>
 </div>`;
   document.querySelector('.chat-messages').appendChild(div);
 
@@ -144,8 +152,8 @@ dice.addEventListener('click', () => {
 const outputDice = (message) => {
   const div = document.createElement('div');
   div.classList.add('message');
-  div.innerHTML = `<p class="meta"> ${message.username}<span> ${message.time}</span></p>
-  <div class="dice">Dice rolled with ${message.text}</div>`;
+  div.innerHTML = `<p class="msg-meta"> ${message.username}<span class="msg-time"> ${message.time}</span></p>
+  <div class="msg-text">Dice rolled with ${message.text}</div>`;
   document.querySelector('.chat-messages').appendChild(div);
 };
 
