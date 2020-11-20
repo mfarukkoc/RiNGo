@@ -61,8 +61,10 @@ socket.on('diceResult', (message) => {
 const checkScrollnX = (f) => {
   let bottom = false;
   if (
-    chatMessages.scrollHeight - chatMessages.scrollTop ===
-    chatMessages.clientHeight
+    chatMessages.scrollHeight -
+      chatMessages.scrollTop -
+      chatMessages.clientHeight <=
+    50
   )
     bottom = true;
   f(); // execute the passed function
