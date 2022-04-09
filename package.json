@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "shortid": "^2.2.15",
     "socket.io": "^2.3.0",
     "tailwindcss": "^1.9.6"
