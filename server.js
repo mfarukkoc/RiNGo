@@ -21,7 +21,6 @@ const botName = 'Chat Bot';
 
 app.get('/:roomid', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'join.html'));
-  let roomid = req.params['roomid'];
 });
 
 // static folder

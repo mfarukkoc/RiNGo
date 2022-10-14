@@ -40,7 +40,7 @@ setTimeout(() => {
   }
 }, 1);
 
-socket.on('roomUsers', ({ room, roomId, users }) => {
+socket.on('roomUsers', ({ room, users }) => {
   console.log(room);
   outputRoomName(room);
   outputUsers(users);
@@ -161,7 +161,7 @@ const outputDice = (message) => {
 
 function copy() {
   element = document.getElementById('link');
-  var range, selection, worked;
+  var range, selection;
 
   if (document.body.createTextRange) {
     range = document.body.createTextRange();
