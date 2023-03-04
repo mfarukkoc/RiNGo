@@ -1,4 +1,4 @@
-# [RiNGo](https://ringo2.herokuapp.com/)
+# RiNGo
 Real-time chat app with RNG features.
 ## To Run The Project
 
